@@ -1,0 +1,102 @@
+# Instala y carga la librería ggplot2 si aún no está instalada
+if (!requireNamespace("ggplot2", quietly = TRUE)) {
+  install.packages("ggplot2")
+}
+library(ggplot2)
+
+# Función que verifica si un punto (x, y) cumple la condición x^2 + y^2 >= 1
+cumple_condicion_a <- function(x, y) {
+  return(x^2 + y^2 >= 1)
+}
+
+# Generar una matriz booleana que indica si cada punto cumple la condición
+x_vals <- seq(-2, 2, length.out = 400)
+y_vals <- seq(-2, 2, length.out = 400)
+points_a <- outer(x_vals, y_vals, Vectorize(cumple_condicion_a))
+
+# Crear el gráfico para el ejercicio 1.2 a
+ggplot() +
+  geom_tile(data = as.data.frame(points_a), aes(x = Var1, y = Var2, fill = points_a)) +
+  scale_fill_manual(values = c("white", "black")) +
+  labs(x = "x", y = "y", title = "Conjunto A: {(x, y) ∈ R^2: x^2 + y^2 ≥ 1}") +
+  theme_minimal()
+
+# Continuar de manera similar para los demás ejercicios cambiando las funciones y los rangos de valores
+
+# Ejercicio 1.2 b
+cumple_condicion_b <- function(x, y) {
+  return(0 < x^2 + y^2 && x^2 + y^2 <= 1)
+}
+
+x_vals <- seq(-1.5, 1.5, length.out = 400)
+y_vals <- seq(-1.5, 1.5, length.out = 400)
+points_b <- outer(x_vals, y_vals, Vectorize(cumple_condicion_b))
+
+ggplot() +
+  geom_tile(data = as.data.frame(points_b), aes(x = Var1, y = Var2, fill = points_b)) +
+  scale_fill_manual(values = c("white", "black")) +
+  labs(x = "x", y = "y", title = "Conjunto A: {(x, y) ∈ R^2: 0 < x^2 + y^2 ≤ 1}") +
+  theme_minimal()
+
+# Ejercicio 1.2 c
+cumple_condicion_c <- function(x, y) {
+  return(1 < x^2 + y^2 && x^2 + y^2 < 4)
+}
+
+x_vals <- seq(-2.5, 2.5, length.out = 400)
+y_vals <- seq(-2.5, 2.5, length.out = 400)
+points_c <- outer(x_vals, y_vals, Vectorize(cumple_condicion_c))
+
+ggplot() +
+  geom_tile(data = as.data.frame(points_c), aes(x = Var1, y = Var2, fill = points_c)) +
+  scale_fill_manual(values = c("white", "black")) +
+  labs(x = "x", y = "y", title = "Conjunto A: {(x, y) ∈ R^2: 1 < x^2 + y^2 < 4}") +
+  theme_minimal()
+
+# Ejercicio 1.2 d
+cumple_condicion_d <- function(x, y) {
+  return(1 < x^2 + y^2 && x^2 + y^2 < 4)
+}
+
+x_vals <- seq(-2.5, 2.5, length.out = 400)
+y_vals <- seq(-2.5, 2.5, length.out = 400)
+points_d <- outer(x_vals, y_vals, Vectorize(cumple_condicion_d))
+
+ggplot() +
+  geom_tile(data = as.data.frame(points_d), aes(x = Var1, y = Var2, fill = points_d)) +
+  scale_fill_manual(values = c("white", "black")) +
+  labs(x = "x", y = "y", title = "Conjunto A: {(x, y) ∈ R^2: 1 < x^2 + y^2 < 4}") +
+  theme_minimal()
+
+# Ejercicio 1.2 e
+cumple_condicion_e <- function(x, y) {
+  return(x <= y^2 && x^2 + y^2 <= 1)
+}
+
+x_vals <- seq(-1.5, 1.5, length.out = 400)
+y_vals <- seq(-1.5, 1.5, length.out = 400)
+points_e <- outer(x_vals, y_vals, Vectorize(cumple_condicion_e))
+
+ggplot() +
+  geom_tile(data = as.data.frame(points_e), aes(x = Var1, y = Var2, fill = points_e)) +
+  scale_fill_manual(values = c("white", "black")) +
+  labs(x = "x", y = "y", title = "Conjunto A: {(x, y) ∈ R^2: x ≤ y^2, x^2 + y^2 ≤ 1}") +
+  theme_minimal()
+
+# Ejercicio 1.2 f
+cumple_condicion_f <- function(x, y) {
+  return(y >= x^2 && -1 < x && x < 1)
+}
+
+x_vals <- seq(-1.5, 1.5, length.out = 400)
+y_vals <- seq(-0.5, 1.5, length.out = 400)
+points_f <- outer(x_vals, y_vals, Vectorize(cumple_condicion_f))
+
+ggplot() +
+  geom_tile(data = as.data.frame(points_f), aes(x = Var1, y = Var2, fill = points_f)) +
+  scale_fill_manual(values = c("white", "black")) +
+  labs(x = "x", y = "y", title = "Conjunto A: {(x, y) ∈ R^2: y ≥ x^2, -1 < x < 1}") +
+  theme_minimal()
+
+# Ejercicio 1.2 g
+# Como en este caso no hay puntos que cumplan la condición, no es necesario generar el gráfico.
