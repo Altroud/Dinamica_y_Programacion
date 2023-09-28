@@ -7607,7 +7607,7 @@ $$\begin{equation}a_x = \lim_{x\to \infty}\sqrt{x^2+x+1}-x\end{equation}$$</p>
 <h2 id="Problema-Lineal"><strong>Problema Lineal</strong><a class="anchor-link" href="#Problema-Lineal">¶</a></h2><hr/>
 <h3 id="Resuelva-el-siguiente-problema-lineal">Resuelva el siguiente problema lineal<a class="anchor-link" href="#Resuelva-el-siguiente-problema-lineal">¶</a></h3><p>$$\begin{equation} \; Min\;C = x+y+z \tag{2} \end{equation}$$
 $$s.a.$$
-$$\begin{align} g(C) = \mathbf{(y-1)^2 - z^2\; \leq 1\tag{3}} \\ h(C)=\; \mathbf{x^2+(y-1)^2+z^2 \leq 3\tag{4}} \end{align}$$</p>
+$$\begin{align} g(C) = \mathbf{(y-1)^2 - z^2\; \leq 1\tag{3}} \\ h(C)=\; \mathbf{x^2+(y-1)^2+z^2 \leq 3\tag{4}} \\ \mathbf{x, y, z\geq 0} \tag{5} \end{align}$$</p>
 </div>
 </div>
 </div>
@@ -7677,6 +7677,9 @@ $$\begin{align} g(C) = \mathbf{(y-1)^2 - z^2\; \leq 1\tag{3}} \\ h(C)=\; \mathbf
 <span class="n">y</span><span class="o">.</span><span class="n">value</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span><span class="n">z</span><span class="o">.</span><span class="n">value</span><span class="o">=</span><span class="mi">3</span>
 <span class="n">m</span><span class="o">.</span><span class="n">Equation</span><span class="p">((</span><span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">z</span><span class="o">**</span><span class="mi">2</span><span class="o">&lt;=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">m</span><span class="o">.</span><span class="n">Equation</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">z</span><span class="o">**</span><span class="mi">2</span><span class="o">&lt;=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Equation</span><span class="p">(</span><span class="n">x</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Equation</span><span class="p">(</span><span class="n">y</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Equation</span><span class="p">(</span><span class="n">z</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">m</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">+</span><span class="n">z</span><span class="p">)</span>
 <span class="n">m</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
@@ -7709,11 +7712,11 @@ $$\begin{align} g(C) = \mathbf{(y-1)^2 - z^2\; \leq 1\tag{3}} \\ h(C)=\; \mathbf
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Objetivo:  -2.0000000068
-Solución:  [[-1.0000000034] [3.2000913472e-09] [-1.0000000065]]
-Función Objetivo Óptima: -2.000000006699909
-Función g Óptima: -1.9400182793560816e-08
-Función h Óptima: 3.0000000133998177
+<pre>Objetivo:  -1.4508725062e-08
+Solución:  [[-5.755080034e-09] [-1.8700556956e-09] [-6.8835893326e-09]]
+Función Objetivo Óptima: -1.4508725062200001e-08
+Función g Óptima: 1.0000000037401113
+Función h Óptima: 1.0000000037401113
 </pre>
 </div>
 </div>
@@ -7757,6 +7760,7 @@ Función h Óptima: 3.0000000133998177
 <span class="n">ecuacion</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">y</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="n">y</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="mi">5</span><span class="p">)</span>
 <span class="c1"># Esta es la solución general de la ecuación en diferencias</span>
 <span class="n">solucion_general</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">rsolve</span><span class="p">(</span><span class="n">ecuacion</span><span class="p">,</span> <span class="n">y</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">solucion_general</span><span class="p">)</span>
 <span class="n">solucion_general_str</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">"$$y(t) = 4 - C_0 \cdot \left(-\frac</span><span class="si">{1}{4}</span><span class="s2">\right)^t\tag</span><span class="si">{5.a}</span><span class="s2">$$"</span>
 <span class="n">dp</span><span class="p">(</span><span class="n">mk</span><span class="p">(</span><span class="sa">f</span><span class="s2">"La solución general de la ecuación en diferencias </span><span class="si">{</span><span class="n">ecuacion_str</span><span class="si">}</span><span class="s2"> es: </span><span class="si">{</span><span class="n">solucion_general_str</span><span class="si">}</span><span class="s2">"</span><span class="p">))</span>
 <span class="c1"># Resolver la ecuación en diferencias (acá asignamos que y(0) = 0)</span>
@@ -7773,6 +7777,13 @@ Función h Óptima: 3.0000000133998177
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>(-0.25)**t*C0 + 4.0
+</pre>
+</div>
+</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
